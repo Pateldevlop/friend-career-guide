@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teri Career Guide – Tech Bina Bhi Tech Industry Mein!</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Kalam:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d1a;
+    --surface: #13131f;
+    --card: #1a1a2e;
+    --border: #252540;
+    --text: #f0e6ff;
+    --muted: #8878aa;
+    --pink: #ff6b9d;
+    --purple: #c77dff;
+    --teal: #00d4aa;
+    --yellow: #ffd166;
+    --orange: #ff9a3c;
+    --blue: #48cae4;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* STARS BACKGROUND */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 60%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 80%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 40%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 20% 90%, rgba(255,255,255,0.2) 0%, transparent 100%),
+      radial-gradient(2px 2px at 80% 15%, rgba(199,125,255,0.5) 0%, transparent 100%),
+      radial-gradient(2px 2px at 45% 75%, rgba(255,107,157,0.4) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
+
+  /* ====== HERO ====== */
+  header {
+    padding: 60px 0 50px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .glow-ring {
+    display: inline-block;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink), var(--purple));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px;
+    margin: 0 auto 24px;
+    box-shadow: 0 0 40px rgba(199,125,255,0.4), 0 0 80px rgba(255,107,157,0.2);
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 40px rgba(199,125,255,0.4), 0 0 80px rgba(255,107,157,0.2); }
+    50% { box-shadow: 0 0 60px rgba(199,125,255,0.7), 0 0 100px rgba(255,107,157,0.4); }
+  }
+  .hero-tag {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--pink), var(--purple));
+    color: white;
+    font-size: 11px;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  header h1 {
+    font-size: clamp(2rem, 5.5vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #fff 0%, var(--purple) 50%, var(--pink) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    color: var(--muted);
+    font-size: 16px;
+    max-width: 520px;
+    margin: 0 auto 32px;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .hero-sub span { color: var(--pink); font-weight: 600; }
+
+  .stat-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .stat-pill {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .stat-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* ====== SECTION ====== */
+  section { padding: 60px 0; position: relative; z-index: 1; }
+  section:not(:last-of-type)::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin-top: 60px;
+  }
+
+  .sec-eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--pink);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .sec-title {
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight: 800;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .sec-sub { color: var(--muted); font-size: 15px; margin-bottom: 36px; font-weight: 400; }
+
+  /* ====== MESSAGE BOX ====== */
+  .message-box {
+    background: linear-gradient(135deg, rgba(255,107,157,0.08), rgba(199,125,255,0.08));
+    border: 1.5px solid rgba(199,125,255,0.25);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .message-box::before {
+    content: '✨';
+    position: absolute;
+    top: -10px; right: 20px;
+    font-size: 40px;
+    opacity: 0.3;
+  }
+  .msg-from {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--pink);
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  .msg-text {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+    font-weight: 400;
+  }
+  .msg-text strong { color: var(--yellow); font-weight: 700; }
+  .msg-sig {
+    font-family: 'Kalam', cursive;
+    font-size: 18px;
+    color: var(--purple);
+    margin-top: 14px;
+  }
+
+  /* ====== CAREER CARDS ====== */
+  .careers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+  }
+  .career-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 16px;
+    padding: 22px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: default;
+  }
+  .career-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--card-glow, linear-gradient(90deg, var(--pink), var(--purple)));
+  }
+  .career-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px var(--card-shadow, rgba(199,125,255,0.1));
+  }
+  .card-icon { font-size: 36px; margin-bottom: 12px; }
+  .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .card-name { font-weight: 800; font-size: 1.1rem; line-height: 1.2; }
+  .demand-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-weight: 700;
+    white-space: nowrap;
+    letter-spacing: 1px;
+  }
+  .d-high { background: rgba(0,212,170,0.15); color: var(--teal); border: 1px solid rgba(0,212,170,0.3); }
+  .d-boom { background: rgba(255,209,102,0.15); color: var(--yellow); border: 1px solid rgba(255,209,102,0.3); }
+  .d-fire { background: rgba(255,107,157,0.15); color: var(--pink); border: 1px solid rgba(255,107,157,0.3); }
+  .card-desc { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; font-weight: 400; }
+  .salary-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .salary-label { font-size: 11px; color: var(--muted); font-family: 'Space Mono', monospace; }
+  .salary-val { font-size: 15px; font-weight: 800; color: var(--teal); }
+  .salary-note { font-size: 11px; color: var(--muted); }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .ctag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.05);
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+  }
+  .highlight-card {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, rgba(255,107,157,0.08) 0%, rgba(199,125,255,0.12) 100%);
+    border-color: rgba(199,125,255,0.3);
+  }
+
+  /* ====== ROADMAP STEPS ====== */
+  .roadmap { display: flex; flex-direction: column; gap: 0; }
+  .rm-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0;
+    position: relative;
+  }
+  .rm-item:not(:last-child) .rm-line {
+    position: absolute;
+    left: 39px;
+    top: 56px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--purple), transparent);
+  }
+  .rm-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4px;
+    position: relative;
+    z-index: 1;
+  }
+  .rm-circle {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+    flex-shrink: 0;
+    border: 2px solid;
+    background: var(--card);
+  }
+  .rm-right {
+    padding: 0 0 40px 20px;
+  }
+  .rm-month {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--pink);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+  .rm-title { font-weight: 800; font-size: 1.1rem; margin-bottom: 6px; }
+  .rm-desc { font-size: 14px; color: var(--muted); font-weight: 400; line-height: 1.7; margin-bottom: 12px; }
+  .rm-tasks { display: flex; flex-direction: column; gap: 7px; }
+  .rm-task {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .rm-task .t-icon { font-size: 16px; flex-shrink: 0; }
+  .rm-task .t-text { line-height: 1.5; }
+  .rm-task .t-sub { font-size: 11px; color: var(--muted); display: block; font-weight: 400; }
+
+  /* ====== RESOURCES ====== */
+  .res-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+  .res-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .res-card:hover { border-color: var(--purple); transform: translateY(-2px); }
+  .res-platform {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--pink);
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .res-name { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+  .res-desc { font-size: 13px; color: var(--muted); line-height: 1.6; font-weight: 400; margin-bottom: 12px; }
+  .res-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .rtag {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-family: 'Space Mono', monospace;
+  }
+  .rt-free { background: rgba(0,212,170,0.1); color: var(--teal); }
+  .rt-hindi { background: rgba(255,107,157,0.15); color: var(--pink); }
+  .rt-yt { background: rgba(255,100,100,0.15); color: #ff6464; }
+  .rt-cert { background: rgba(255,209,102,0.15); color: var(--yellow); }
+
+  /* ====== SKILL TABLE ====== */
+  .skill-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .skill-table th {
+    text-align: left;
+    padding: 10px 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(37,37,64,0.5);
+    font-size: 14px;
+    vertical-align: top;
+  }
+  .skill-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .skill-name { font-weight: 700; }
+  .skill-sub { font-size: 12px; color: var(--muted); margin-top: 2px; font-weight: 400; }
+  .diff-pill {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-weight: 700;
+  }
+  .easy { background: rgba(0,212,170,0.15); color: var(--teal); }
+  .med { background: rgba(255,209,102,0.15); color: var(--yellow); }
+  .tool-list { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 4px; }
+  .tool-chip {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.06);
+    color: var(--muted);
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* ====== AFFIRMATION CARDS ====== */
+  .affirm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .affirm-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .affirm-card:hover { transform: scale(1.02); }
+  .affirm-emoji { font-size: 30px; margin-bottom: 10px; }
+  .affirm-hindi {
+    font-family: 'Kalam', cursive;
+    font-size: 16px;
+    color: var(--purple);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .affirm-eng { font-size: 12px; color: var(--muted); font-weight: 400; }
+
+  /* ====== GLOW TIP BOX ====== */
+  .glow-tip {
+    background: linear-gradient(135deg, rgba(0,212,170,0.07), rgba(72,202,228,0.07));
+    border: 1.5px solid rgba(0,212,170,0.2);
+    border-radius: 14px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    margin: 20px 0;
+  }
+  .gt-icon { font-size: 28px; flex-shrink: 0; }
+  .gt-title { font-weight: 700; margin-bottom: 5px; color: var(--teal); }
+  .gt-text { font-size: 14px; color: var(--muted); font-weight: 400; line-height: 1.7; }
+  .gt-text strong { color: var(--text); font-weight: 600; }
+
+  /* ====== DAILY PLAN ====== */
+  .day-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+  }
+  .day-card {
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 8px;
+    text-align: center;
+  }
+  .day-name {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .day-emoji { font-size: 20px; margin-bottom: 6px; }
+  .day-task { font-size: 10px; font-weight: 600; line-height: 1.4; }
+  .day-time {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--pink);
+    margin-top: 4px;
+  }
+  .weekend { border-color: rgba(199,125,255,0.3); background: rgba(199,125,255,0.04); }
+
+  footer {
+    text-align: center;
+    padding: 36px 20px;
+    border-top: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
+  }
+  .footer-heart {
+    font-size: 28px;
+    margin-bottom: 10px;
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+  @keyframes heartbeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
+  .footer-text {
+    font-family: 'Kalam', cursive;
+    font-size: 18px;
+    color: var(--purple);
+    margin-bottom: 8px;
+  }
+  .footer-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+
+  @media (max-width: 600px) {
+    .careers-grid { grid-template-columns: 1fr; }
+    .day-grid { grid-template-columns: repeat(3, 1fr); }
+    .rm-item { grid-template-columns: 50px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header>
+  <div class="container">
+    <div class="glow-ring">👩‍💻</div>
+    <div class="hero-tag">🌸 TERI DOST KE LIYE — HINDI GUIDE</div>
+    <h1>Coding Nahi Aati?<br>Koi Baat Nahi —<br>Tech Industry Mein<br>Jagah Hai Tere Liye!</h1>
+    <p class="hero-sub">
+      Social media, communication, creativity — yeh tere <span>superpowers</span> hain.<br>
+      Aaj ki digital duniya mein <span>coding ke bina bhi lakhon ki job</span> milti hai.
+    </p>
+    <div class="stat-row">
+      <div class="stat-pill"><span class="stat-dot" style="background:var(--pink)"></span>Non-Coding Fields</div>
+      <div class="stat-pill"><span class="stat-dot" style="background:var(--teal)"></span>High Growth Careers</div>
+      <div class="stat-pill"><span class="stat-dot" style="background:var(--yellow)"></span>Hindi Resources</div>
+    </div>
+  </div>
+</header>
+
+<!-- PERSONAL MESSAGE -->
+<section>
+  <div class="container">
+    <div class="message-box">
+      <div class="msg-from">// SUNLE YAAR —</div>
+      <div class="msg-text">
+        Agar tu soch rahi hai ki <strong>"coding nahi aati toh tech mein kya karungi"</strong> — toh yeh sochna band kar. Aaj duniya ki sabse badi companies — Instagram, Google, Zomato, Nykaa — sirf developers hire nahi karti. Unhe <strong>content creators, digital marketers, community managers, UI/UX designers</strong> bhi chahiye hote hain. Aur inn logon ki salary? Developer se <strong>zyada bhi hoti hai</strong> kuch cases mein. Teri social media samajh aur communication skill? <strong>Yahi toh market mein sabse zyada demand mein hai abhi.</strong>
+      </div>
+      <div class="msg-sig">— Tera Career Guide 💜</div>
+    </div>
+  </div>
+</section>
+
+<!-- TOP CAREER OPTIONS -->
+<section>
+  <div class="container">
+    <div class="sec-eyebrow">// Top Career Paths</div>
+    <div class="sec-title">Teri Strengths Ke Liye<br>Best 5 Careers</div>
+    <p class="sec-sub">In mein se kisi ek pe focus kar — 6-12 mahine mein entry-level job pakki</p>
+
+    <div class="careers-grid">
+
+      <!-- HIGHLIGHT -->
+      <div class="career-card highlight-card" style="--card-glow: linear-gradient(90deg, var(--pink), var(--purple)); --card-shadow: rgba(255,107,157,0.15)">
+        <div class="card-icon">🌟</div>
+        <div class="card-top">
+          <div class="card-name">Digital Marketing Specialist</div>
+          <div class="demand-badge d-fire">🔥 MOST DEMAND</div>
+        </div>
+        <div class="card-desc">SEO, Social Media Ads, Email Campaigns, Google Ads — yeh sab seekh ke companies ka online growth handle karo. Har business ko yeh chahiye — startups se lekar bade brands tak.</div>
+        <div class="salary-row">
+          <span class="salary-label">SALARY:</span>
+          <span class="salary-val">₹25K–₹80K/month</span>
+          <span class="salary-note">(2-3 saal baad)</span>
+        </div>
+        <div class="card-tags">
+          <span class="ctag">Social Media</span>
+          <span class="ctag">SEO</span>
+          <span class="ctag">Google Ads</span>
+          <span class="ctag">Analytics</span>
+          <span class="ctag">Content Strategy</span>
+        </div>
+      </div>
+
+      <div class="career-card" style="--card-glow: linear-gradient(90deg, var(--teal), var(--blue)); --card-shadow: rgba(0,212,170,0.1)">
+        <div class="card-icon">✍️</div>
+        <div class="card-top">
+          <div class="card-name">Content Creator / Writer</div>
+          <div class="demand-badge d-boom">⚡ BOOMING</div>
+        </div>
+        <div class="card-desc">Blog likhna, YouTube scripts, Instagram captions, LinkedIn posts — content hi toh internet hai. Har brand ko daily fresh content chahiye aur acche writers bahut rare hain.</div>
+        <div class="salary-row">
+          <span class="salary-label">SALARY:</span>
+          <span class="salary-val">₹20K–₹60K/month</span>
+          <span class="salary-note">+ freelance income</span>
+        </div>
+        <div class="card-tags">
+          <span class="ctag">Copywriting</span>
+          <span class="ctag">SEO Writing</span>
+          <span class="ctag">Social Captions</span>
+        </div>
+      </div>
+
+      <div class="career-card" style="--card-glow: linear-gradient(90deg, var(--purple), #a855f7); --card-shadow: rgba(199,125,255,0.1)">
+        <div class="card-icon">🎨</div>
+        <div class="card-top">
+          <div class="card-name">UI/UX Designer</div>
+          <div class="demand-badge d-boom">⚡ HIGH GROWTH</div>
+        </div>
+        <div class="card-desc">Apps aur websites ko sundar aur easy-to-use banana — coding nahi, Figma tool use hota hai. Agar creative hai toh yeh field best hai. Design thinking = big salary.</div>
+        <div class="salary-row">
+          <span class="salary-label">SALARY:</span>
+          <span class="salary-val">₹30K–₹90K/month</span>
+          <span class="salary-note">(experience ke saath)</span>
+        </div>
+        <div class="card-tags">
+          <span class="ctag">Figma</span>
+          <span class="ctag">Canva Pro</span>
+          <span class="ctag">User Research</span>
+        </div>
+      </div>
+
+      <div class="career-card" style="--card-glow: linear-gradient(90deg, var(--yellow), var(--orange)); --card-shadow: rgba(255,209,102,0.1)">
+        <div class="card-icon">📱</div>
+        <div class="card-top">
+          <div class="card-name">Social Media Manager</div>
+          <div class="demand-badge d-high">✅ STABLE</div>
+        </div>
+        <div class="card-desc">Brands ki Instagram, YouTube, LinkedIn handle karo. Reels banao, strategy banao, analytics dekho. Agar tujhe social media pe already time spend karna achha lagta hai toh yeh toh kaam ki hi baat hai!</div>
+        <div class="salary-row">
+          <span class="salary-label">SALARY:</span>
+          <span class="salary-val">₹20K–₹55K/month</span>
+          <span class="salary-note">+ freelance projects</span>
+        </div>
+        <div class="card-tags">
+          <span class="ctag">Instagram</span>
+          <span class="ctag">Reels</span>
+          <span class="ctag">Analytics</span>
+          <span class="ctag">Scheduling</span>
+        </div>
+      </div>
+
+      <div class="career-card" style="--card-glow: linear-gradient(90deg, #ec4899, #f43f5e); --card-shadow: rgba(236,72,153,0.1)">
+        <div class="card-icon">🤝</div>
+        <div class="card-top">
+          <div class="card-name">Community / PR Manager</div>
+          <div class="demand-badge d-high">✅ GROWING</div>
+        </div>
+        <div class="card-desc">Users, customers ya fans ke saath relationship build karo. Baatein karna teri strength hai — yeh field tere liye hi bana hai. Startups aur apps mein bohot demand hai.</div>
+        <div class="salary-row">
+          <span class="salary-label">SALARY:</span>
+          <span class="salary-val">₹22K–₹65K/month</span>
+          <span class="salary-note">(growth fast hai)</span>
+        </div>
+        <div class="card-tags">
+          <span class="ctag">Communication</span>
+          <span class="ctag">Discord/Slack</span>
+          <span class="ctag">Brand Voice</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="glow-tip" style="margin-top: 28px;">
+      <div class="gt-icon">💡</div>
+      <div>
+        <div class="gt-title">Meri Recommendation — Teri Situation Ke Liye</div>
+        <div class="gt-text">Tu college student hai, social media + communication strong hai — toh <strong>Digital Marketing</strong> sabse fast aur high-paying career hai tere liye. 6 mahine mein ek internship pakki ho sakti hai, 1 saal mein freelance income shuru, aur 2 saal mein full-time job with ₹40-50K/month easily.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS TABLE -->
+<section>
+  <div class="container">
+    <div class="sec-eyebrow">// Kya Seekhna Hai</div>
+    <div class="sec-title">Digital Marketing ke<br>Core Skills</div>
+    <p class="sec-sub">Yeh sab seekhne ke liye coding ki zaroorat nahi — sirf laptop aur internet chahiye</p>
+
+    <table class="skill-table">
+      <thead>
+        <tr>
+          <th>Skill</th>
+          <th>Difficulty</th>
+          <th>Tools</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="skill-name">Social Media Marketing</div><div class="skill-sub">Instagram, Facebook, LinkedIn strategy</div></td>
+          <td><span class="diff-pill easy">EASY</span></td>
+          <td><div class="tool-list"><span class="tool-chip">Canva</span><span class="tool-chip">Buffer</span><span class="tool-chip">Meta Suite</span></div></td>
+          <td style="color:var(--teal);font-family:'Space Mono',monospace;font-size:13px">2 Weeks</td>
+        </tr>
+        <tr>
+          <td><div class="skill-name">SEO Basics</div><div class="skill-sub">Google pe website top pe kaise aaye</div></td>
+          <td><span class="diff-pill easy">EASY</span></td>
+          <td><div class="tool-list"><span class="tool-chip">Google Search Console</span><span class="tool-chip">Ubersuggest</span></div></td>
+          <td style="color:var(--teal);font-family:'Space Mono',monospace;font-size:13px">3 Weeks</td>
+        </tr>
+        <tr>
+          <td><div class="skill-name">Content Writing</div><div class="skill-sub">Blog, caption, ad copy likhna</div></td>
+          <td><span class="diff-pill easy">EASY</span></td>
+          <td><div class="tool-list"><span class="tool-chip">ChatGPT</span><span class="tool-chip">Grammarly</span><span class="tool-chip">Notion</span></div></td>
+          <td style="color:var(--teal);font-family:'Space Mono',monospace;font-size:13px">Ongoing</td>
+        </tr>
+        <tr>
+          <td><div class="skill-name">Google Ads / Meta Ads</div><div class="skill-sub">Paid advertising campaigns</div></td>
+          <td><span class="diff-pill med">MEDIUM</span></td>
+          <td><div class="tool-list"><span class="tool-chip">Google Ads</span><span class="tool-chip">Meta Ads Manager</span></div></td>
+          <td style="color:var(--teal);font-family:'Space Mono',monospace;font-size:13px">4 Weeks</td>
+        </tr>
+        <tr>
+          <td><div class="skill-name">Email Marketing</div><div class="skill-sub">Campaigns, automation, newsletters</div></td>
+          <td><span class="diff-pill easy">EASY</span></td>
+          <td><div class="tool-list"><span class="tool-chip">Mailchimp</span><span class="tool-chip">ConvertKit</span></div></td>
+          <td style="color:var(--teal);font-family:'Space Mono',monospace;font-size:13px">2 Weeks</td>
+        </tr>
+        <tr>
+          <td><div class="skill-name">Analytics</div><div class="skill-sub">Data dekhke decisions lena</div></td>
+          <td><span class="diff-pill med">MEDIUM</span></td>
+          <td><div class="tool-list"><span class="tool-chip">Google Analytics</span><span class="tool-chip">Instagram Insights</span></div></td>
+          <td style="color:var(--teal);font-family:'Space Mono',monospace;font-size:13px">3 Weeks</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 6 MONTH ROADMAP -->
+<section>
+  <div class="container">
+    <div class="sec-eyebrow">// 6 Mahine Ka Plan</div>
+    <div class="sec-title">Step by Step Roadmap<br>College Se Job Tak</div>
+    <p class="sec-sub">Ek ek step follow kar — confuse mat ho, seedha aage badh</p>
+
+    <div class="roadmap">
+
+      <div class="rm-item">
+        <div class="rm-line"></div>
+        <div class="rm-left">
+          <div class="rm-circle" style="border-color:var(--pink);color:var(--pink)">🌱</div>
+        </div>
+        <div class="rm-right">
+          <div class="rm-month">MONTH 1 — FOUNDATION</div>
+          <div class="rm-title">Samajhna Shuru Karo</div>
+          <div class="rm-desc">Theory nahi — seedha practice. Free courses se basics lo, apna ek Instagram page banao sirf practice ke liye (kisi bhi topic pe — food, fashion, tips).</div>
+          <div class="rm-tasks">
+            <div class="rm-task"><span class="t-icon">📺</span><div class="t-text">Digital Marketing ki free Hindi playlist dekho (WsCube Tech ya Deepak Kanakaraju)<span class="t-sub">Roz 1 video + us topic ko use karo</span></div></div>
+            <div class="rm-task"><span class="t-icon">📱</span><div class="t-text">Ek practice Instagram page banao — kisi bhi niche pe<span class="t-sub">Real-world practice — best teacher hai</span></div></div>
+            <div class="rm-task"><span class="t-icon">🎨</span><div class="t-text">Canva seekho — posters, reels thumbnails, carousels<span class="t-sub">Canva free hai — 1 week mein expert ban jaogi</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rm-item">
+        <div class="rm-line"></div>
+        <div class="rm-left">
+          <div class="rm-circle" style="border-color:var(--purple);color:var(--purple)">📚</div>
+        </div>
+        <div class="rm-right">
+          <div class="rm-month">MONTH 2 — SKILLS BUILD</div>
+          <div class="rm-title">Core Skills Pakki Karo</div>
+          <div class="rm-desc">SEO, Content Writing, aur Email Marketing seekho. Google ka free certification bhi lo — resume mein kaam aayega.</div>
+          <div class="rm-tasks">
+            <div class="rm-task"><span class="t-icon">🔍</span><div class="t-text">SEO basics seekho — on-page, keywords, backlinks<span class="t-sub">Ubersuggest free tool se practice karo</span></div></div>
+            <div class="rm-task"><span class="t-icon">✍️</span><div class="t-text">Roz 1 blog post ya caption likho — kisi bhi topic pe<span class="t-sub">Writing habit banao — consistency = improvement</span></div></div>
+            <div class="rm-task"><span class="t-icon">🏆</span><div class="t-text">Google Digital Garage ka FREE certificate lo<span class="t-sub">Internationally recognized — resume ke liye gold hai</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rm-item">
+        <div class="rm-line"></div>
+        <div class="rm-left">
+          <div class="rm-circle" style="border-color:var(--teal);color:var(--teal)">🛠️</div>
+        </div>
+        <div class="rm-right">
+          <div class="rm-month">MONTH 3 — PORTFOLIO</div>
+          <div class="rm-title">Apna Kaam Dikhao</div>
+          <div class="rm-desc">Portfolio bana — 5-6 real examples — social media posts, blog articles, ad copies. Yeh tere CV se zyada powerful hai.</div>
+          <div class="rm-tasks">
+            <div class="rm-task"><span class="t-icon">💼</span><div class="t-text">Portfolio website banao — Notion ya Wix pe (free)<span class="t-sub">Apne best kaam ke screenshots daalo</span></div></div>
+            <div class="rm-task"><span class="t-icon">📊</span><div class="t-text">Apne practice page ki growth report dikhao<span class="t-sub">"Maine yeh page 0 se 500 followers tak liya" — powerful proof hai</span></div></div>
+            <div class="rm-task"><span class="t-icon">🔗</span><div class="t-text">LinkedIn profile professional banao<span class="t-sub">Bio mein likho: "Digital Marketing Student | Content Creator"</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rm-item">
+        <div class="rm-line"></div>
+        <div class="rm-left">
+          <div class="rm-circle" style="border-color:var(--yellow);color:var(--yellow)">💸</div>
+        </div>
+        <div class="rm-right">
+          <div class="rm-month">MONTH 4 — FREELANCE START</div>
+          <div class="rm-title">Pehli Earning Shuru Karo</div>
+          <div class="rm-desc">College mein hi freelancing shuru karo — chhoti local businesses ko help karo. Isse experience bhi milega aur pocket money bhi.</div>
+          <div class="rm-tasks">
+            <div class="rm-task"><span class="t-icon">💻</span><div class="t-text">Fiverr ya Internshala pe profile banao<span class="t-sub">Social media management aur content writing gigs daalo</span></div></div>
+            <div class="rm-task"><span class="t-icon">🏪</span><div class="t-text">Apne sheher ki 2-3 local shops ko free mein help karo<span class="t-sub">Experience ke liye — baad mein testimonial maango</span></div></div>
+            <div class="rm-task"><span class="t-icon">🤝</span><div class="t-text">College ke professors ya startups se internship maango<span class="t-sub">Internshala.com pe roz 2-3 applications bhejo</span></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rm-item">
+        <div class="rm-line"></div>
+        <div class="rm-left">
+          <div class="rm-circle" style="border-color:var(--orange);color:var(--orange)">🚀</div>
+        </div>
+        <div class="rm-right">
+          <div class="rm-month">MONTH 5-6 — JOB READY</div>
+          <div class="rm-title">Job Pakdo Ya Agency Shuru Karo</div>
+          <div class="rm-desc">Ab tere paas skills hain, portfolio hai, internship experience hai — ab full-time job ya apni digital marketing agency shuru karne ka time hai!</div>
+          <div class="rm-tasks">
+            <div class="rm-task"><span class="t-icon">🎯</span><div class="t-text">LinkedIn pe "Open to Work" on karo + connect with HRs<span class="t-sub">Roz 5 companies ko message bhejo — cold outreach works!</span></div></div>
+            <div class="rm-task"><span class="t-icon">📝</span><div class="t-text">Resume mein numbers daalo — "Instagram page 0→2000 followers in 3 months"<span class="t-sub">Numbers = credibility</span></div></div>
+            <div class="rm-task"><span class="t-icon">💡</span><div class="t-text">Ya khud 2-3 clients le aur freelance agency shuru karo<span class="t-sub">₹15-20K/month freelance college mein hi possible hai</span></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HINDI RESOURCES -->
+<section>
+  <div class="container">
+    <div class="sec-eyebrow">// Free Hindi Resources</div>
+    <div class="sec-title">Kahan Se Seekhe<br>Bilkul FREE Mein</div>
+    <p class="sec-sub">Yeh saare resources Hindi mein hain — koi paid course ki zaroorat nahi</p>
+
+    <div class="res-grid">
+
+      <div class="res-card">
+        <div class="res-platform">YOUTUBE</div>
+        <div class="res-name">WsCube Tech</div>
+        <div class="res-desc">Digital Marketing ka sabse complete Hindi YouTube channel. SEO, Social Media, Google Ads — sab kuch free mein. Beginners ke liye perfect.</div>
+        <div class="res-tags">
+          <span class="rtag rt-free">FREE</span>
+          <span class="rtag rt-hindi">🇮🇳 HINDI</span>
+          <span class="rtag rt-yt">YOUTUBE</span>
+        </div>
+      </div>
+
+      <div class="res-card">
+        <div class="res-platform">YOUTUBE</div>
+        <div class="res-name">Deepak Kanakaraju (Digital Deepak)</div>
+        <div class="res-desc">India ke top digital marketers mein se ek. Practical tips, career advice, aur real stories — motivation ke saath learning milegi.</div>
+        <div class="res-tags">
+          <span class="rtag rt-free">FREE</span>
+          <span class="rtag rt-hindi">🇮🇳 HINDI/ENG</span>
+          <span class="rtag rt-yt">YOUTUBE</span>
+        </div>
+      </div>
+
+      <div class="res-card">
+        <div class="res-platform">YOUTUBE</div>
+        <div class="res-name">Hisham Sarwar</div>
+        <div class="res-desc">Freelancing aur digital marketing tips Hindi mein. Fiverr se paise kaise kamaye — iske baare mein best content hai inka.</div>
+        <div class="res-tags">
+          <span class="rtag rt-free">FREE</span>
+          <span class="rtag rt-hindi">🇮🇳 HINDI</span>
+          <span class="rtag rt-yt">YOUTUBE</span>
+        </div>
+      </div>
+
+      <div class="res-card">
+        <div class="res-platform">FREE CERTIFICATION</div>
+        <div class="res-name">Google Digital Garage</div>
+        <div class="res-desc">"Fundamentals of Digital Marketing" — free certified course, internationally recognized. Resume mein Google ka naam add hoga — HR notice karte hain.</div>
+        <div class="res-tags">
+          <span class="rtag rt-free">COMPLETELY FREE</span>
+          <span class="rtag rt-cert">CERTIFICATE</span>
+        </div>
+      </div>
+
+      <div class="res-card">
+        <div class="res-platform">FREE CERTIFICATION</div>
+        <div class="res-name">Meta Blueprint</div>
+        <div class="res-desc">Facebook aur Instagram ads ki official training — Meta khud deta hai yeh free mein. Social media marketer ke liye must-have certificate hai.</div>
+        <div class="res-tags">
+          <span class="rtag rt-free">FREE</span>
+          <span class="rtag rt-cert">META CERTIFICATE</span>
+        </div>
+      </div>
+
+      <div class="res-card">
+        <div class="res-platform">INTERNSHIP PLATFORM</div>
+        <div class="res-name">Internshala.com</div>
+        <div class="res-desc">India ka #1 internship platform. Digital marketing internships — work from home, stipend ke saath. College mein hi experience milega.</div>
+        <div class="res-tags">
+          <span class="rtag rt-free">FREE TO JOIN</span>
+          <span class="rtag rt-hindi">🇮🇳 INDIA</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WEEKLY PLAN -->
+<section>
+  <div class="container">
+    <div class="sec-eyebrow">// Daily Routine</div>
+    <div class="sec-title">Roz Sirf 2 Ghante Kafi Hain</div>
+    <p class="sec-sub">Week ka simple plan — overwhelm mat ho, yeh follow karo bas</p>
+
+    <div class="day-grid">
+      <div class="day-card">
+        <div class="day-name">MON</div>
+        <div class="day-emoji">📺</div>
+        <div class="day-task">Ek Video + Notes</div>
+        <div class="day-time">1 hr</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">TUE</div>
+        <div class="day-emoji">✍️</div>
+        <div class="day-task">Ek Post / Blog Likho</div>
+        <div class="day-time">1.5 hr</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">WED</div>
+        <div class="day-emoji">🎨</div>
+        <div class="day-task">Canva Design Practice</div>
+        <div class="day-time">1 hr</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">THU</div>
+        <div class="day-emoji">📊</div>
+        <div class="day-task">Analytics Review</div>
+        <div class="day-time">45 min</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">FRI</div>
+        <div class="day-emoji">🔍</div>
+        <div class="day-task">SEO / New Skill</div>
+        <div class="day-time">1.5 hr</div>
+      </div>
+      <div class="day-card weekend">
+        <div class="day-name">SAT</div>
+        <div class="day-emoji">💼</div>
+        <div class="day-task">Portfolio Work / Apply</div>
+        <div class="day-time">2-3 hr</div>
+      </div>
+      <div class="day-card weekend">
+        <div class="day-name">SUN</div>
+        <div class="day-emoji">🌸</div>
+        <div class="day-task">Rest / Next Week Plan</div>
+        <div class="day-time">30 min</div>
+      </div>
+    </div>
+
+    <div class="glow-tip" style="margin-top: 24px;">
+      <div class="gt-icon">⚡</div>
+      <div>
+        <div class="gt-title">Sabse Important Tip</div>
+        <div class="gt-text"><strong>College mein hi apna khud ka Instagram ya blog shuru karo</strong> — chahe kisi bhi topic pe ho. Yeh teri "live portfolio" ban jaayegi. Jab interview mein poochhe "experience kya hai?" — toh apna page dikhao. <strong>Yeh ek real page 100 certificates se zyada powerful hai.</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOTIVATION -->
+<section>
+  <div class="container">
+    <div class="sec-eyebrow">// Yaad Rakhna Hamesha</div>
+    <div class="sec-title">Tere Liye Kuch Baatein 💜</div>
+    <p class="sec-sub">Jab bhi demotivate feel ho — yeh padh lena</p>
+
+    <div class="affirm-grid">
+      <div class="affirm-card">
+        <div class="affirm-emoji">🌟</div>
+        <div class="affirm-hindi">"Study mein nahi lagi<br>toh bhi zindagi mein<br>lag sakti hai"</div>
+        <div class="affirm-eng">Marks ≠ Success</div>
+      </div>
+      <div class="affirm-card">
+        <div class="affirm-emoji">💪</div>
+        <div class="affirm-hindi">"Coding nahi aati?<br>Aakhri baar socho<br>yeh baat — aage badho"</div>
+        <div class="affirm-eng">Skills > Degree</div>
+      </div>
+      <div class="affirm-card">
+        <div class="affirm-emoji">🚀</div>
+        <div class="affirm-hindi">"Roz ek chhoti<br>cheez seekhna<br>kafi hai"</div>
+        <div class="affirm-eng">Consistency wins</div>
+      </div>
+      <div class="affirm-card">
+        <div class="affirm-emoji">🌸</div>
+        <div class="affirm-hindi">"Social media use<br>karna jaanti ho?<br>Toh job bhi milegi"</div>
+        <div class="affirm-eng">Your skill matters</div>
+      </div>
+      <div class="affirm-card">
+        <div class="affirm-emoji">💡</div>
+        <div class="affirm-hindi">"Compare mat karo<br>khud ko — apni<br>pace hi best hai"</div>
+        <div class="affirm-eng">Your journey, your pace</div>
+      </div>
+      <div class="affirm-card">
+        <div class="affirm-emoji">🎯</div>
+        <div class="affirm-hindi">"6 mahine baad<br>tum wahi nahi hogi<br>jo aaj ho"</div>
+        <div class="affirm-eng">Growth is certain</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-heart">💜</div>
+    <div class="footer-text">Teri dost ke liye — Tech Industry Mein Tera Swagat Hai!</div>
+    <div class="footer-sub">DIGITAL MARKETING GUIDE &nbsp;|&nbsp; HINDI RESOURCES &nbsp;|&nbsp; COLLEGE TO CAREER</div>
+  </div>
+</footer>
+
+</body>
+</html>

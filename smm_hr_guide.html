@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Media Manager + HR Manager — Complete Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8f4ff;
+  --white: #ffffff;
+  --ink: #12002e;
+  --muted: #7560a0;
+  --border: #e4d9f5;
+
+  /* SMM Colors */
+  --smm: #e91e8c;
+  --smm-light: #fce4f3;
+  --smm-mid: #f48fb1;
+
+  /* HR Colors */
+  --hr: #1565c0;
+  --hr-light: #e3f0ff;
+  --hr-mid: #90caf9;
+
+  /* Shared accents */
+  --green: #00b87a;
+  --amber: #f59e0b;
+  --purple: #7c3aed;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  line-height: 1.6;
+}
+
+/* ─── NOISE OVERLAY ─── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 999;
+}
+
+.container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+/* ─── HERO ─── */
+.hero {
+  background: var(--ink);
+  padding: 56px 0 48px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(233,30,140,0.15), transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 350px; height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(21,101,192,0.18), transparent 70%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 1; }
+.hero-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+.hero-chip {
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.chip-smm { background: rgba(233,30,140,0.2); color: #ff6eb5; border: 1px solid rgba(233,30,140,0.3); }
+.chip-hr  { background: rgba(21,101,192,0.2);  color: #90caf9; border: 1px solid rgba(21,101,192,0.3); }
+.chip-hi  { background: rgba(245,158,11,0.2);  color: #fcd34d; border: 1px solid rgba(245,158,11,0.3); }
+.hero h1 {
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 14px;
+}
+.hero h1 .smm-col { color: #ff6eb5; }
+.hero h1 .hr-col  { color: #90caf9; }
+.hero-sub {
+  color: rgba(255,255,255,0.5);
+  font-size: 15px;
+  max-width: 560px;
+  font-weight: 400;
+  margin-bottom: 28px;
+}
+.hero-formula {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 12px 20px;
+  flex-wrap: wrap;
+}
+.hf-step {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.hf-arrow { color: rgba(255,255,255,0.3); font-size: 14px; }
+
+/* ─── SECTION ─── */
+.section { padding: 64px 0; }
+.section + .section { border-top: 2px dashed var(--border); }
+
+.eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.sec-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+.sec-sub { color: var(--muted); font-size: 15px; margin-bottom: 36px; font-weight: 400; }
+
+/* ─── CAREER HEADER CARDS ─── */
+.career-header-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.career-hero-card {
+  border-radius: 20px;
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.career-hero-card.smm { background: linear-gradient(135deg, #e91e8c, #c2185b); }
+.career-hero-card.hr  { background: linear-gradient(135deg, #1565c0, #0d47a1); }
+.career-hero-card::before {
+  content: attr(data-icon);
+  position: absolute;
+  right: -10px; top: -10px;
+  font-size: 90px;
+  opacity: 0.12;
+  line-height: 1;
+}
+.chc-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 8px;
+}
+.chc-title { font-size: 1.5rem; font-weight: 800; color: #fff; margin-bottom: 8px; line-height: 1.2; }
+.chc-salary { font-size: 1.1rem; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 12px; }
+.chc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.chc-tag {
+  background: rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.9);
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+/* ─── PHASE BLOCKS ─── */
+.phase-block {
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  border: 1.5px solid var(--border);
+}
+.phase-block.smm-theme { border-color: #f9a8d4; }
+.phase-block.hr-theme  { border-color: #bfdbfe; }
+
+.phase-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 22px;
+  border-bottom: 1.5px solid var(--border);
+}
+.phase-block.smm-theme .phase-top { background: var(--smm-light); border-color: #f9a8d4; }
+.phase-block.hr-theme  .phase-top { background: var(--hr-light);  border-color: #bfdbfe; }
+
+.phase-num-badge {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.smm-badge { background: var(--smm); color: #fff; }
+.hr-badge  { background: var(--hr);  color: #fff; }
+
+.phase-title-text { font-weight: 800; font-size: 1.1rem; flex: 1; }
+.phase-weeks-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.phase-body { padding: 20px 22px; background: var(--white); }
+.phase-desc { font-size: 14px; color: var(--muted); margin-bottom: 16px; font-weight: 400; line-height: 1.6; }
+
+/* Task checklist */
+.task-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 14px; }
+.task-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+.task-item:hover { transform: translateX(3px); }
+.task-item.smm-task:hover { border-color: var(--smm); }
+.task-item.hr-task:hover  { border-color: var(--hr); }
+.task-item.checked { opacity: 0.55; }
+.task-item.checked .task-text { text-decoration: line-through; }
+.check-box {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  margin-top: 1px;
+  transition: all 0.2s;
+  color: #fff;
+}
+.task-item.smm-task.checked .check-box { background: var(--smm); border-color: var(--smm); }
+.task-item.hr-task.checked  .check-box { background: var(--hr);  border-color: var(--hr); }
+.task-text { font-size: 14px; font-weight: 600; line-height: 1.5; flex: 1; }
+.task-tip  { font-size: 12px; color: var(--muted); display: block; font-weight: 400; margin-top: 3px; }
+.task-do   { font-size: 11px; font-weight: 700; margin-top: 4px; padding: 2px 8px; border-radius: 4px; display: inline-block; }
+.do-smm { background: var(--smm-light); color: var(--smm); }
+.do-hr  { background: var(--hr-light);  color: var(--hr); }
+
+/* Resources within phase */
+.res-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.res-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.res-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.res-pill {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1.5px solid;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.res-pill:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(0,0,0,0.1); }
+.rp-yt-smm { border-color: #fda4af; background: #fff1f5; color: #be185d; }
+.rp-yt-hr  { border-color: #93c5fd; background: #eff6ff; color: #1e40af; }
+.rp-free   { border-color: #6ee7b7; background: #f0fdf9; color: #065f46; }
+.rp-cert   { border-color: #fcd34d; background: #fffbeb; color: #92400e; }
+.rp-tool   { border-color: #d8b4fe; background: #faf5ff; color: #6d28d9; }
+.hin-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  background: #ff7043;
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+}
+.free-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  background: var(--green);
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* ─── TOOLS GRID ─── */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 12px;
+}
+.tool-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.tool-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.07); }
+.tool-icon { font-size: 28px; margin-bottom: 8px; }
+.tool-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; }
+.tool-use  { font-size: 12px; color: var(--muted); font-weight: 400; line-height: 1.5; }
+.tool-free {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-top: 6px;
+  font-weight: 700;
+}
+.tf-free { background: #dcfce7; color: #15803d; }
+.tf-paid { background: #fef3c7; color: #92400e; }
+
+/* ─── SALARY TABLE ─── */
+.salary-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.salary-table th {
+  text-align: left;
+  padding: 10px 14px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--border);
+}
+.salary-table td { padding: 13px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.salary-table tr:hover td { background: var(--bg); }
+.exp-lvl { font-weight: 700; }
+.sal-num { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 15px; }
+.sal-smm { color: var(--smm); }
+.sal-hr  { color: var(--hr); }
+.growth-pill {
+  display: inline-block;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+.g-high { background: #dcfce7; color: #15803d; }
+.g-med  { background: #fef3c7; color: #92400e; }
+
+/* ─── DAILY ROUTINE ─── */
+.routine-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+.day-slot {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 8px;
+  text-align: center;
+}
+.day-slot.weekend { background: var(--bg); }
+.day-name {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.day-emoji { font-size: 22px; margin-bottom: 6px; }
+.day-act { font-size: 11px; font-weight: 700; line-height: 1.4; color: var(--ink); }
+.day-dur {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  margin-top: 5px;
+  font-weight: 700;
+}
+.dur-smm { color: var(--smm); }
+.dur-hr  { color: var(--hr); }
+
+/* ─── TIP BOX ─── */
+.tip-box {
+  border-radius: 14px;
+  padding: 18px 22px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin: 20px 0;
+}
+.tip-box.smm-tip { background: var(--smm-light); border: 1.5px solid #f9a8d4; }
+.tip-box.hr-tip  { background: var(--hr-light);  border: 1.5px solid #bfdbfe; }
+.tip-box.green-tip { background: #f0fdf4; border: 1.5px solid #86efac; }
+.tip-icon { font-size: 26px; flex-shrink: 0; }
+.tip-title { font-weight: 800; margin-bottom: 4px; font-size: 15px; }
+.tip-text  { font-size: 14px; color: var(--muted); font-weight: 400; line-height: 1.7; }
+.tip-text strong { color: var(--ink); font-weight: 700; }
+
+/* ─── MISTAKES ─── */
+.mistakes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.mistake-card {
+  background: var(--white);
+  border: 1.5px solid #fecaca;
+  border-radius: 12px;
+  padding: 16px;
+}
+.mk-x { font-size: 20px; margin-bottom: 8px; }
+.mk-title { font-weight: 700; font-size: 14px; margin-bottom: 6px; color: #dc2626; }
+.mk-fix { font-size: 13px; color: var(--muted); font-weight: 400; line-height: 1.6; }
+.mk-fix .fix { color: var(--green); font-weight: 700; }
+
+/* ─── AFFIRMATIONS ─── */
+.affirm-strip {
+  background: var(--ink);
+  border-radius: 16px;
+  padding: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+.affirm-item { text-align: center; }
+.aff-emoji { font-size: 28px; margin-bottom: 8px; }
+.aff-text {
+  font-family: 'Kalam', cursive;
+  font-size: 15px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.5;
+  margin-bottom: 4px;
+}
+.aff-eng { font-size: 11px; color: rgba(255,255,255,0.35); font-family: 'Space Mono', monospace; letter-spacing: 1px; }
+
+/* ─── DIVIDER ─── */
+.career-divider {
+  text-align: center;
+  padding: 20px 0;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 3px;
+  position: relative;
+}
+.career-divider::before, .career-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 35%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border));
+}
+.career-divider::before { left: 0; background: linear-gradient(90deg, transparent, var(--border)); }
+.career-divider::after  { right: 0; background: linear-gradient(270deg, transparent, var(--border)); }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 32px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+.footer-big {
+  font-family: 'Kalam', cursive;
+  font-size: 22px;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 6px;
+}
+
+@media (max-width: 640px) {
+  .career-header-grid { grid-template-columns: 1fr; }
+  .mistakes-grid { grid-template-columns: 1fr; }
+  .routine-grid { grid-template-columns: repeat(3, 1fr); }
+  .hero h1 { font-size: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<div class="hero">
+  <div class="container hero-inner">
+    <div class="hero-chips">
+      <span class="hero-chip chip-smm">📱 Social Media Manager</span>
+      <span class="hero-chip chip-hr">👥 HR Manager</span>
+      <span class="hero-chip chip-hi">🇮🇳 Hindi Resources</span>
+    </div>
+    <h1>Do Powerful Careers —<br><span class="smm-col">SMM</span> aur <span class="hr-col">HR</span><br>Complete Guide</h1>
+    <p class="hero-sub">Theory nahi — seedha kya karo, kaise karo, kahan se seekho. Dono careers ke liye practical step-by-step roadmap + Hindi YouTube references.</p>
+    <div class="hero-formula">
+      <span class="hf-step">📺 Video Dekho</span>
+      <span class="hf-arrow">→</span>
+      <span class="hf-step">🔨 Practice Karo</span>
+      <span class="hf-arrow">→</span>
+      <span class="hf-step">📂 Portfolio Banao</span>
+      <span class="hf-arrow">→</span>
+      <span class="hf-step">💼 Job Lo</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ CAREER OVERVIEW ═══════════════════ -->
+<div class="section">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--purple)">// Career Overview</div>
+    <div class="sec-title">Dono Careers Ek Nazar Mein</div>
+    <p class="sec-sub">Salary, demand aur required skills — pehle samjho, phir choose karo</p>
+
+    <div class="career-header-grid">
+      <div class="career-hero-card smm" data-icon="📱">
+        <div class="chc-label">CAREER 01</div>
+        <div class="chc-title">Social Media Manager</div>
+        <div class="chc-salary">₹18K–₹80K/month</div>
+        <div class="chc-tags">
+          <span class="chc-tag">Instagram</span>
+          <span class="chc-tag">Reels</span>
+          <span class="chc-tag">Canva</span>
+          <span class="chc-tag">Analytics</span>
+          <span class="chc-tag">Content</span>
+          <span class="chc-tag">Ads</span>
+        </div>
+      </div>
+      <div class="career-hero-card hr" data-icon="👥">
+        <div class="chc-label">CAREER 02</div>
+        <div class="chc-title">HR Manager</div>
+        <div class="chc-salary">₹25K–₹1.2L/month</div>
+        <div class="chc-tags">
+          <span class="chc-tag">Recruitment</span>
+          <span class="chc-tag">Onboarding</span>
+          <span class="chc-tag">Payroll</span>
+          <span class="chc-tag">Policies</span>
+          <span class="chc-tag">LinkedIn</span>
+          <span class="chc-tag">Interviews</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Salary table -->
+    <table class="salary-table">
+      <thead>
+        <tr>
+          <th>Experience Level</th>
+          <th>SMM Salary</th>
+          <th>HR Salary</th>
+          <th>Job Market</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="exp-lvl">Fresher (0-1 yr)</span><br><small style="color:var(--muted)">Internship / Entry Job</small></td>
+          <td><span class="sal-num sal-smm">₹10K–₹22K</span></td>
+          <td><span class="sal-num sal-hr">₹15K–₹28K</span></td>
+          <td><span class="growth-pill g-high">High Demand</span></td>
+        </tr>
+        <tr>
+          <td><span class="exp-lvl">Junior (1-3 yrs)</span><br><small style="color:var(--muted)">First Real Job</small></td>
+          <td><span class="sal-num sal-smm">₹22K–₹45K</span></td>
+          <td><span class="sal-num sal-hr">₹28K–₹55K</span></td>
+          <td><span class="growth-pill g-high">Growing Fast</span></td>
+        </tr>
+        <tr>
+          <td><span class="exp-lvl">Mid-Level (3-5 yrs)</span><br><small style="color:var(--muted)">Team Lead / Manager</small></td>
+          <td><span class="sal-num sal-smm">₹45K–₹80K</span></td>
+          <td><span class="sal-num sal-hr">₹55K–₹1.2L</span></td>
+          <td><span class="growth-pill g-high">Excellent</span></td>
+        </tr>
+        <tr>
+          <td><span class="exp-lvl">Senior / Freelance</span><br><small style="color:var(--muted)">Own Agency / Consultant</small></td>
+          <td><span class="sal-num sal-smm">₹80K–₹3L+</span></td>
+          <td><span class="sal-num sal-hr">₹1L–₹4L+</span></td>
+          <td><span class="growth-pill g-med">Premium</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════ SOCIAL MEDIA MANAGER ═══════════════════ -->
+<div class="section">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--smm)">// Career 01 — Full Roadmap</div>
+    <div class="sec-title" style="color:var(--smm)">📱 Social Media Manager</div>
+    <p class="sec-sub">6 Mahine mein job-ready — Instagram se lekar agency tak</p>
+
+    <div class="tip-box smm-tip">
+      <div class="tip-icon">💡</div>
+      <div>
+        <div class="tip-title">Pehle Yeh Samjho</div>
+        <div class="tip-text">SMM ka kaam hai — <strong>brand ki online presence banana, grow karna aur audience se connect karna</strong>. Tujhe creative hona chahiye, social media trends samajhni chahiye, aur numbers (analytics) se darna nahi chahiye. Coding? Bilkul nahi chahiye.</div>
+      </div>
+    </div>
+
+    <!-- Phase 1 -->
+    <div class="phase-block smm-theme">
+      <div class="phase-top">
+        <span class="phase-num-badge smm-badge">PHASE 01</span>
+        <span class="phase-title-text">Basics — Platform Samjho</span>
+        <span class="phase-weeks-tag">⏱ 2 Weeks</span>
+      </div>
+      <div class="phase-body">
+        <p class="phase-desc">Instagram, Facebook, YouTube, LinkedIn — har platform alag hota hai. Pehle samjho kaise kaam karta hai har ek, phir seekho professionally manage karna.</p>
+        <div class="task-list">
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Instagram Business Account banao — personal nahi, Business
+              <span class="task-tip">💡 Analytics tab milti hai — followers kab active hain, posts pe reach</span>
+              <span class="task-do do-smm">👉 Karo: Apne liye ya family ki shop ke liye ek Business page banao</span>
+            </div>
+          </div>
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Har platform ki algorithm samjho — Reels kyu viral hote hain?
+              <span class="task-tip">💡 WsCube Tech pe "Instagram Algorithm 2024" search karo</span>
+              <span class="task-do do-smm">👉 Karo: 5 viral Reels dekho aur note karo — kya common hai?</span>
+            </div>
+          </div>
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Content Calendar kya hota hai — 30 din ka plan banana seekho
+              <span class="task-tip">💡 Kab post karo, kya post karo, kitni baar — yeh plan hai</span>
+              <span class="task-do do-smm">👉 Karo: Kisi bhi brand ka 1 hafte ka content calendar banao Notion mein</span>
+            </div>
+          </div>
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Canva se professional graphics banana seekho
+              <span class="task-tip">💡 Canva mein Instagram Post, Story, Reel Cover — sab templates hain FREE</span>
+              <span class="task-do do-smm">👉 Karo: 5 different styles mein post banao ek hi topic pe</span>
+            </div>
+          </div>
+        </div>
+        <div class="res-label">Hindi Resources — Phase 1</div>
+        <div class="res-pills">
+          <a href="https://youtube.com/@WsCubeTech" target="_blank" class="res-pill rp-yt-smm">📺 WsCube Tech <span class="hin-tag">HINDI</span></a>
+          <a href="https://youtube.com/@idigiskills" target="_blank" class="res-pill rp-yt-smm">📺 iDigiSkills <span class="hin-tag">HINDI</span></a>
+          <a href="https://canva.com" target="_blank" class="res-pill rp-tool">🎨 Canva.com <span class="free-tag">FREE</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase-block smm-theme">
+      <div class="phase-top">
+        <span class="phase-num-badge smm-badge">PHASE 02</span>
+        <span class="phase-title-text">Content Creation — Posts, Reels, Stories</span>
+        <span class="phase-weeks-tag">⏱ 3 Weeks</span>
+      </div>
+      <div class="phase-body">
+        <p class="phase-desc">Sirf post banana kafi nahi — engaging content banana aata chahiye. Hook, caption, CTA, hashtags — yeh sab strategy hai.</p>
+        <div class="task-list">
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Reel editing seekho — CapCut ya InShot (mobile) se
+              <span class="task-tip">💡 CapCut free hai — transitions, text, music sab milta hai</span>
+              <span class="task-do do-smm">👉 Karo: Roz 1 Reel banao — chahe 10 views mile, practice hogi</span>
+            </div>
+          </div>
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Hook likhna seekho — pehli 3 seconds hi decide karte hain
+              <span class="task-tip">💡 "Kya tum jaante ho..." / "Yeh galti mat karna..." — hooks hote hain</span>
+              <span class="task-do do-smm">👉 Karo: 10 viral Reels ke hooks note karo — pattern dekhega</span>
+            </div>
+          </div>
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Caption writing aur Hashtag strategy
+              <span class="task-tip">💡 30 hashtags mat daalo — 5-10 targeted hashtags better hain</span>
+              <span class="task-do do-smm">👉 Karo: Apne practice page pe 2 hafte roz post karke analytics dekho</span>
+            </div>
+          </div>
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Carousel posts banao — 7-10 slides, storytelling style
+              <span class="task-tip">💡 Carousels pe 3x zyada engagement aata hai normal posts se</span>
+              <span class="task-do do-smm">👉 Karo: Canva mein "10 tips about [any topic]" carousel banao</span>
+            </div>
+          </div>
+        </div>
+        <div class="res-label">Hindi Resources — Phase 2</div>
+        <div class="res-pills">
+          <a href="https://youtube.com/@SheryiansCodeSchool" target="_blank" class="res-pill rp-yt-smm">📺 Sheryians <span class="hin-tag">HINDI</span></a>
+          <a href="https://youtube.com/@digitaldeepakofficial" target="_blank" class="res-pill rp-yt-smm">📺 Digital Deepak <span class="hin-tag">HINDI</span></a>
+          <a href="https://www.capcut.com/" target="_blank" class="res-pill rp-tool">🎬 CapCut <span class="free-tag">FREE</span></a>
+          <a href="https://app.buffer.com/" target="_blank" class="res-pill rp-tool">📅 Buffer Scheduling <span class="free-tag">FREE</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 3 -->
+    <div class="phase-block smm-theme">
+      <div class="phase-top">
+        <span class="phase-num-badge smm-badge">PHASE 03</span>
+        <span class="phase-title-text">Analytics & Strategy</span>
+        <span class="phase-weeks-tag">⏱ 2 Weeks</span>
+      </div>
+      <div class="phase-body">
+        <p class="phase-desc">Numbers se darna nahi — yeh batata hai kya kaam kar raha hai kya nahi. Data dekh ke better content banao.</p>
+        <div class="task-list">
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Instagram Insights padho — Reach, Impressions, Engagement Rate
+              <span class="task-tip">💡 Engagement Rate = (Likes + Comments) / Followers × 100</span>
+              <span class="task-do do-smm">👉 Karo: Apne best 3 aur worst 3 posts compare karo — kya alag hai?</span>
+            </div>
+          </div>
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Meta Business Suite seekho — Facebook + Instagram dono manage karo ek jagah
+              <span class="task-tip">💡 Scheduling, analytics, inbox — sab ek dashboard mein FREE</span>
+              <span class="task-do do-smm">👉 Karo: Ek hafte ke posts schedule karo Meta Suite se</span>
+            </div>
+          </div>
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Competitor analysis karna seekho
+              <span class="task-tip">💡 Competitors ke best posts dekho — kya trend chal raha hai?</span>
+              <span class="task-do do-smm">👉 Karo: 3 competitors ka weekly analysis sheet banao Excel mein</span>
+            </div>
+          </div>
+        </div>
+        <div class="res-label">Hindi Resources — Phase 3</div>
+        <div class="res-pills">
+          <a href="https://youtube.com/@WsCubeTech" target="_blank" class="res-pill rp-yt-smm">📺 WsCube — Analytics <span class="hin-tag">HINDI</span></a>
+          <a href="https://skillshop.withgoogle.com/" target="_blank" class="res-pill rp-cert">🏆 Google Skillshop <span class="free-tag">FREE CERT</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 4 -->
+    <div class="phase-block smm-theme">
+      <div class="phase-top">
+        <span class="phase-num-badge smm-badge">PHASE 04</span>
+        <span class="phase-title-text">Paid Ads — Meta & Google Ads</span>
+        <span class="phase-weeks-tag">⏱ 3 Weeks</span>
+      </div>
+      <div class="phase-body">
+        <p class="phase-desc">Organic growth acha hai par paid ads jaanne se salary DOUBLE ho jaati hai. Meta Ads Manager aur Google Ads basics zaroor seekho.</p>
+        <div class="task-list">
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Meta Ads Manager — Campaign, Ad Set, Ad kya hota hai
+              <span class="task-tip">💡 ₹100 ka bhi ad chala sakte ho practice ke liye</span>
+              <span class="task-do do-smm">👉 Karo: ₹100 ka ek Instagram ad chalao — results note karo</span>
+            </div>
+          </div>
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Target Audience set karna seekho — Age, Location, Interests
+              <span class="task-tip">💡 Sahi audience = low cost, high result. Wrong audience = paise waste</span>
+              <span class="task-do do-smm">👉 Karo: 3 alag audience sets banao ek hi ad ke liye</span>
+            </div>
+          </div>
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Meta Blueprint FREE certification le lo
+              <span class="task-tip">💡 Meta khud deta hai yeh — resume pe "Meta Certified" likhna bada plus hai</span>
+              <span class="task-do do-smm">👉 Karo: blueprint.facebook.com pe register karo aaj hi</span>
+            </div>
+          </div>
+        </div>
+        <div class="res-label">Hindi Resources — Phase 4</div>
+        <div class="res-pills">
+          <a href="https://youtube.com/@WsCubeTech" target="_blank" class="res-pill rp-yt-smm">📺 WsCube — Meta Ads <span class="hin-tag">HINDI</span></a>
+          <a href="https://www.facebookblueprint.com/" target="_blank" class="res-pill rp-cert">🏆 Meta Blueprint <span class="free-tag">FREE CERT</span></a>
+          <a href="https://skillshop.withgoogle.com/" target="_blank" class="res-pill rp-cert">🏆 Google Ads Cert <span class="free-tag">FREE</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phase 5 -->
+    <div class="phase-block smm-theme">
+      <div class="phase-top">
+        <span class="phase-num-badge smm-badge">PHASE 05</span>
+        <span class="phase-title-text">Portfolio + Internship + Freelance</span>
+        <span class="phase-weeks-tag">⏱ 4 Weeks</span>
+      </div>
+      <div class="phase-body">
+        <p class="phase-desc">Ab skills hain — ab dikhao aur kamao. Portfolio banao, internship lo, aur ek-do freelance clients pakdo.</p>
+        <div class="task-list">
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Case Study banao apne practice page ki — "0 se X followers in Y days"
+              <span class="task-tip">💡 Before/After screenshots, strategy jo use ki, results — yahi portfolio hai</span>
+              <span class="task-do do-smm">👉 Karo: Notion ya Google Slides mein ek professional case study banao</span>
+            </div>
+          </div>
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">LinkedIn profile update karo — "Social Media Manager | Content Creator"
+              <span class="task-tip">💡 Portfolio link daalo, certifications add karo, 3-4 posts likho</span>
+              <span class="task-do do-smm">👉 Karo: LinkedIn pe roz 1 marketing tip post karo — visibility badhegi</span>
+            </div>
+          </div>
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Fiverr gig banao — "Social Media Management" ya "Instagram Growth"
+              <span class="task-tip">💡 Shuru mein ₹500-1000 mein kaam lo — reviews ke liye</span>
+              <span class="task-do do-smm">👉 Karo: Fiverr pe account + 2 gigs create karo with portfolio</span>
+            </div>
+          </div>
+          <div class="task-item smm-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Internshala / LinkedIn Jobs pe SMM internship ke liye apply karo
+              <span class="task-tip">💡 Work from home SMM internships — stipend + certificate milta hai</span>
+              <span class="task-do do-smm">👉 Karo: Roz 5 applications — don't wait for perfect, start applying</span>
+            </div>
+          </div>
+        </div>
+        <div class="res-label">Hindi Resources — Phase 5</div>
+        <div class="res-pills">
+          <a href="https://internshala.com" target="_blank" class="res-pill rp-free">💼 Internshala <span class="free-tag">APPLY</span></a>
+          <a href="https://fiverr.com" target="_blank" class="res-pill rp-tool">💰 Fiverr Freelance</a>
+          <a href="https://youtube.com/@HishamSarwar" target="_blank" class="res-pill rp-yt-smm">📺 Hisham Sarwar — Freelancing <span class="hin-tag">HINDI</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SMM Tools -->
+    <div class="sec-title" style="font-size:1.5rem;margin:32px 0 16px">🛠️ SMM Ke Zaroori Tools</div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon">🎨</div>
+        <div class="tool-name">Canva</div>
+        <div class="tool-use">Graphics, carousels, stories, thumbnails banao</div>
+        <span class="tool-free tf-free">FREE</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🎬</div>
+        <div class="tool-name">CapCut</div>
+        <div class="tool-use">Reels editing — transitions, text, music</div>
+        <span class="tool-free tf-free">FREE</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📅</div>
+        <div class="tool-name">Buffer</div>
+        <div class="tool-use">Posts schedule karo — auto-post hoga</div>
+        <span class="tool-free tf-free">FREE PLAN</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📊</div>
+        <div class="tool-name">Meta Business Suite</div>
+        <div class="tool-use">FB + Insta analytics, ads, inbox — ek jagah</div>
+        <span class="tool-free tf-free">FREE</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🔍</div>
+        <div class="tool-name">Ubersuggest</div>
+        <div class="tool-use">Keywords aur competitor research</div>
+        <span class="tool-free tf-free">FREE</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📋</div>
+        <div class="tool-name">Notion</div>
+        <div class="tool-use">Content calendar, ideas, planning</div>
+        <span class="tool-free tf-free">FREE</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🤖</div>
+        <div class="tool-name">ChatGPT</div>
+        <div class="tool-use">Captions, hooks, content ideas generate karo</div>
+        <span class="tool-free tf-free">FREE</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🎥</div>
+        <div class="tool-name">InShot</div>
+        <div class="tool-use">Video editing on mobile — easy to use</div>
+        <span class="tool-free tf-free">FREE</span>
+      </div>
+    </div>
+
+    <div class="tip-box green-tip" style="margin-top:24px">
+      <div class="tip-icon">🚀</div>
+      <div>
+        <div class="tip-title">SMM Ka Golden Rule</div>
+        <div class="tip-text"><strong>Pehle apna khud ka Instagram page grow karo</strong> — kisi bhi topic pe (food, motivation, fashion, tips). Jab 500-1000 followers ho jaayein, woh teri biggest achievement hai. Interview mein yeh page dikhao — <strong>koi certificate is ek page se zyada impressive nahi hoga.</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ DIVIDER ═══════════════════ -->
+<div class="career-divider">── CAREER 02 ──</div>
+
+<!-- ═══════════════════ HR MANAGER ═══════════════════ -->
+<div class="section">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--hr)">// Career 02 — Full Roadmap</div>
+    <div class="sec-title" style="color:var(--hr)">👥 HR Manager</div>
+    <p class="sec-sub">6 Mahine mein HR executive se HR Manager tak — college se shuru karo</p>
+
+    <div class="tip-box hr-tip">
+      <div class="tip-icon">💡</div>
+      <div>
+        <div class="tip-title">HR Kya Hota Hai — Seedha Samjho</div>
+        <div class="tip-text">HR ka kaam hai — <strong>sahi logon ko company mein laana, unhe khush rakhna, aur company aur employees ke beech bridge banana</strong>. Recruitment, salary, training, performance review — yeh sab HR karta hai. Baatein karna teri strength hai? <strong>HR ke liye perfect ho tum.</strong></div>
+      </div>
+    </div>
+
+    <!-- HR Phase 1 -->
+    <div class="phase-block hr-theme">
+      <div class="phase-top">
+        <span class="phase-num-badge hr-badge">PHASE 01</span>
+        <span class="phase-title-text">HR Basics — Recruitment Samjho</span>
+        <span class="phase-weeks-tag">⏱ 2 Weeks</span>
+      </div>
+      <div class="phase-body">
+        <p class="phase-desc">HR ka core kaam hai recruitment — sahi candidate dhundhna. Pehle yeh process samjho: JD likhna, resume screen karna, interview lena, offer dena.</p>
+        <div class="task-list">
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Job Description (JD) likhna seekho — roles, responsibilities, requirements
+              <span class="task-tip">💡 Naukri.com ya LinkedIn pe 5 JDs padho — pattern samjho</span>
+              <span class="task-do do-hr">👉 Karo: Kisi bhi role ke liye ek JD khud likhkar naukri.com wali se compare karo</span>
+            </div>
+          </div>
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Resume screening karna seekho — ATS keywords, red flags
+              <span class="task-tip">💡 ATS = Applicant Tracking System — companies resume filter karne ke liye use karte hain</span>
+              <span class="task-do do-hr">👉 Karo: 10 resumes download karo naukri.com se aur rate karo — top 3 select karo</span>
+            </div>
+          </div>
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Interview process samjho — HR Round, Technical Round, Final Round
+              <span class="task-tip">💡 HR round mein behavioral questions hote hain — "Tell me about yourself"</span>
+              <span class="task-do do-hr">👉 Karo: Apne dost ka mock HR interview lo — 10 questions prepare karo</span>
+            </div>
+          </div>
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">LinkedIn Recruiter basics — Boolean search, candidate sourcing
+              <span class="task-tip">💡 "Java Developer" AND "Mumbai" — aise search karte hain recruiters</span>
+              <span class="task-do do-hr">👉 Karo: LinkedIn pe ek role ke liye 5 candidates dhundho Boolean search se</span>
+            </div>
+          </div>
+        </div>
+        <div class="res-label">Hindi Resources — Phase 1</div>
+        <div class="res-pills">
+          <a href="https://youtube.com/@HRInsiderHindi" target="_blank" class="res-pill rp-yt-hr">📺 HR Insider Hindi <span class="hin-tag">HINDI</span></a>
+          <a href="https://youtube.com/@skillsfire" target="_blank" class="res-pill rp-yt-hr">📺 Skills Fire <span class="hin-tag">HINDI</span></a>
+          <a href="https://naukri.com" target="_blank" class="res-pill rp-free">💼 Naukri.com <span class="free-tag">FREE</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HR Phase 2 -->
+    <div class="phase-block hr-theme">
+      <div class="phase-top">
+        <span class="phase-num-badge hr-badge">PHASE 02</span>
+        <span class="phase-title-text">Core HR Skills — Onboarding & Policies</span>
+        <span class="phase-weeks-tag">⏱ 3 Weeks</span>
+      </div>
+      <div class="phase-body">
+        <p class="phase-desc">Recruitment ke baad kya? Onboarding — naye employee ka pehla din perfect banana. Aur company policies — leave policy, code of conduct samjhna.</p>
+        <div class="task-list">
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Onboarding checklist banana seekho — Day 1 to Week 4 plan
+              <span class="task-tip">💡 Good onboarding = employee 3 saal tak rehta hai. Bad onboarding = 3 mahine mein chala jaata hai</span>
+              <span class="task-do do-hr">👉 Karo: Ek complete 30-day onboarding plan banao Google Docs mein</span>
+            </div>
+          </div>
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">HR Policies samjho — Leave policy, Attendance, Code of Conduct
+              <span class="task-tip">💡 Indian Labour Law basics bhi jaano — PF, ESI, Gratuity</span>
+              <span class="task-do do-hr">👉 Karo: Kisi bhi company ki HR Policy PDF download karo aur padho (mostly public hoti hain)</span>
+            </div>
+          </div>
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Employee engagement activities plan karna seekho
+              <span class="task-tip">💡 Birthday celebrations, team outings, survey — yeh sab HR karta hai</span>
+              <span class="task-do do-hr">👉 Karo: 20-member team ke liye 1 quarter ka engagement calendar banao</span>
+            </div>
+          </div>
+        </div>
+        <div class="res-label">Hindi Resources — Phase 2</div>
+        <div class="res-pills">
+          <a href="https://youtube.com/@HRInsiderHindi" target="_blank" class="res-pill rp-yt-hr">📺 HR Insider — Policies <span class="hin-tag">HINDI</span></a>
+          <a href="https://www.hrbpinstitute.com/" target="_blank" class="res-pill rp-free">🏆 HRBP Institute <span class="free-tag">FREE RESOURCES</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HR Phase 3 -->
+    <div class="phase-block hr-theme">
+      <div class="phase-top">
+        <span class="phase-num-badge hr-badge">PHASE 03</span>
+        <span class="phase-title-text">Payroll & Compliance Basics</span>
+        <span class="phase-weeks-tag">⏱ 2 Weeks</span>
+      </div>
+      <div class="phase-body">
+        <p class="phase-desc">Payroll matlab salary process karna — PF, ESI, TDS. Yeh boring lagta hai par senior HR ke liye must-know skill hai aur salary bhi zyada milti hai.</p>
+        <div class="task-list">
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">PF (Provident Fund) aur ESI kya hota hai — basics samjho
+              <span class="task-tip">💡 PF = retirement savings, ESI = medical insurance — mandatory for companies</span>
+              <span class="task-do do-hr">👉 Karo: EPFO.gov.in pe jaao — employee ka PF kaise calculate hota hai dekho</span>
+            </div>
+          </div>
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Excel mein salary sheet banana seekho
+              <span class="task-tip">💡 Basic, HRA, DA, Gross, Deductions, Net salary — formula seekho</span>
+              <span class="task-do do-hr">👉 Karo: 5 employees ke liye salary calculation sheet banao Excel mein</span>
+            </div>
+          </div>
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">HR Software basics — Zoho People ya greytHR (free trial)
+              <span class="task-tip">💡 Companies HRMS software use karti hain — koi bhi ek seekh lo</span>
+              <span class="task-do do-hr">👉 Karo: Zoho People ka free trial lo — attendance, leave module explore karo</span>
+            </div>
+          </div>
+        </div>
+        <div class="res-label">Hindi Resources — Phase 3</div>
+        <div class="res-pills">
+          <a href="https://youtube.com/@HRInsiderHindi" target="_blank" class="res-pill rp-yt-hr">📺 HR Insider — Payroll <span class="hin-tag">HINDI</span></a>
+          <a href="https://www.zoho.com/people/" target="_blank" class="res-pill rp-tool">💻 Zoho People <span class="free-tag">FREE TRIAL</span></a>
+          <a href="https://greythr.com/" target="_blank" class="res-pill rp-tool">💻 greytHR Trial <span class="free-tag">FREE</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HR Phase 4 -->
+    <div class="phase-block hr-theme">
+      <div class="phase-top">
+        <span class="phase-num-badge hr-badge">PHASE 04</span>
+        <span class="phase-title-text">Performance Management & L&D</span>
+        <span class="phase-weeks-tag">⏱ 2 Weeks</span>
+      </div>
+      <div class="phase-body">
+        <p class="phase-desc">Employees ki performance review karna aur unhe train karna — yeh HR ka most creative part hai. KPIs, appraisals, training needs — yeh sab seekho.</p>
+        <div class="task-list">
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">KPI aur KRA kya hota hai — performance metrics samjho
+              <span class="task-tip">💡 KPI = Key Performance Indicator, KRA = Key Result Area — interview mein zaroor poochhe jaate hain</span>
+              <span class="task-do do-hr">👉 Karo: Sales Executive role ke liye 5 KPIs define karo — phir HR role ke liye 5</span>
+            </div>
+          </div>
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">Training Needs Analysis (TNA) karna seekho
+              <span class="task-tip">💡 Employee mein kya skill gap hai → uske liye training plan</span>
+              <span class="task-do do-hr">👉 Karo: Ek hypothetical team ke liye TNA report banao Word mein</span>
+            </div>
+          </div>
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">360-degree feedback system samjho
+              <span class="task-tip">💡 Self, manager, peers, subordinates — sab se feedback collect karna</span>
+              <span class="task-do do-hr">👉 Karo: Google Forms mein ek 360 feedback form banao — actually fill karo</span>
+            </div>
+          </div>
+        </div>
+        <div class="res-label">Hindi Resources — Phase 4</div>
+        <div class="res-pills">
+          <a href="https://youtube.com/@skillsfire" target="_blank" class="res-pill rp-yt-hr">📺 Skills Fire — Performance <span class="hin-tag">HINDI</span></a>
+          <a href="https://www.coursera.org/learn/human-resource-management" target="_blank" class="res-pill rp-cert">🏆 Coursera HR Course <span class="free-tag">AUDIT FREE</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HR Phase 5 -->
+    <div class="phase-block hr-theme">
+      <div class="phase-top">
+        <span class="phase-num-badge hr-badge">PHASE 05</span>
+        <span class="phase-title-text">Certifications + Internship + Job Apply</span>
+        <span class="phase-weeks-tag">⏱ 3 Weeks</span>
+      </div>
+      <div class="phase-body">
+        <p class="phase-desc">Ab skills hain — ab officially prove karo. HR certifications + LinkedIn presence + Internshala se job apply — yeh teen karo aur job pakki hogi.</p>
+        <div class="task-list">
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">SHRM Essentials ya Google HR Certificate lo (free/low cost)
+              <span class="task-tip">💡 Google Career Certificate mein "Human Resources" track hai — Coursera pe audit mode mein FREE</span>
+              <span class="task-do do-hr">👉 Karo: Coursera pe "Google Project Management" bhi lo — HR ke saath combo powerful hai</span>
+            </div>
+          </div>
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">LinkedIn profile HR professional ki tarah banao
+              <span class="task-tip">💡 Headline: "HR Enthusiast | Recruitment | People Operations | MBA HR"</span>
+              <span class="task-do do-hr">👉 Karo: HR se related 3-4 posts publish karo — "5 things I learned about recruitment"</span>
+            </div>
+          </div>
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">HR Internship ke liye apply karo — Internshala, LinkedIn, Naukri
+              <span class="task-tip">💡 "HR Intern", "Talent Acquisition Intern", "HR Executive" — yeh search karo</span>
+              <span class="task-do do-hr">👉 Karo: Aaj hi 10 applications bhejo — don't overthink, just apply</span>
+            </div>
+          </div>
+          <div class="task-item hr-task" onclick="toggleTask(this)">
+            <div class="check-box"></div>
+            <div class="task-text">HR Resume banao — skills, internship, projects, certifications
+              <span class="task-tip">💡 "Managed mock recruitment drive for 50+ candidates" — numbers daalo hamesha</span>
+              <span class="task-do do-hr">👉 Karo: Resume PDF banao aur 3 logo ko review karwao</span>
+            </div>
+          </div>
+        </div>
+        <div class="res-label">Hindi Resources — Phase 5</div>
+        <div class="res-pills">
+          <a href="https://www.coursera.org/" target="_blank" class="res-pill rp-cert">🏆 Coursera HR Cert <span class="free-tag">AUDIT FREE</span></a>
+          <a href="https://internshala.com" target="_blank" class="res-pill rp-free">💼 Internshala HR Jobs</a>
+          <a href="https://naukri.com" target="_blank" class="res-pill rp-free">💼 Naukri — HR Fresher</a>
+          <a href="https://youtube.com/@HRInsiderHindi" target="_blank" class="res-pill rp-yt-hr">📺 HR Insider — Interview Prep <span class="hin-tag">HINDI</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- HR Tools -->
+    <div class="sec-title" style="font-size:1.5rem;margin:32px 0 16px">🛠️ HR Ke Zaroori Tools</div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon">💼</div>
+        <div class="tool-name">LinkedIn Recruiter</div>
+        <div class="tool-use">Candidates dhundho, connect karo, message karo</div>
+        <span class="tool-free tf-free">FREE BASIC</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📋</div>
+        <div class="tool-name">Zoho Recruit</div>
+        <div class="tool-use">ATS — applications track karo, pipeline manage karo</div>
+        <span class="tool-free tf-free">FREE TRIAL</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📊</div>
+        <div class="tool-name">Excel / Google Sheets</div>
+        <div class="tool-use">Salary sheets, attendance, data tracking</div>
+        <span class="tool-free tf-free">FREE</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">👥</div>
+        <div class="tool-name">Zoho People</div>
+        <div class="tool-use">Attendance, leaves, employee records manage karo</div>
+        <span class="tool-free tf-free">FREE TRIAL</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📝</div>
+        <div class="tool-name">Google Forms</div>
+        <div class="tool-use">Surveys, feedback forms, exit interviews</div>
+        <span class="tool-free tf-free">FREE</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📁</div>
+        <div class="tool-name">Notion / Google Docs</div>
+        <div class="tool-use">Policies, SOPs, onboarding documents</div>
+        <span class="tool-free tf-free">FREE</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">🤝</div>
+        <div class="tool-name">Naukri.com</div>
+        <div class="tool-use">Job postings, resume search, candidate contact</div>
+        <span class="tool-free tf-paid">BASIC FREE</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">📞</div>
+        <div class="tool-name">Microsoft Teams / Zoom</div>
+        <div class="tool-use">Virtual interviews, onboarding sessions</div>
+        <span class="tool-free tf-free">FREE</span>
+      </div>
+    </div>
+
+    <div class="tip-box hr-tip" style="margin-top:24px">
+      <div class="tip-icon">🚀</div>
+      <div>
+        <div class="tip-title">HR Ka Golden Rule</div>
+        <div class="tip-text"><strong>College mein hi ek mock recruitment drive organize karo</strong> — apne department ke liye koi event, internship ya college project ke liye. Yeh "HR experience" ban jaayega. Resume mein likho: <strong>"Organized recruitment drive for 30+ candidates, screened 15 resumes, conducted 8 mock interviews."</strong> Yeh ek real project hai — interviewer impress hoga.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ DAILY ROUTINE (BOTH) ═══════════════════ -->
+<div class="section">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--purple)">// Daily Schedule</div>
+    <div class="sec-title">Weekly Routine — Dono Ke Liye</div>
+    <p class="sec-sub">Roz sirf 2-2.5 ghante kafi hain — consistent raho</p>
+
+    <div style="margin-bottom:12px">
+      <span style="background:var(--smm-light);color:var(--smm);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;margin-right:8px">📱 SMM ke liye</span>
+      <span style="background:var(--hr-light);color:var(--hr);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700">👥 HR ke liye</span>
+    </div>
+
+    <div class="routine-grid">
+      <div class="day-slot">
+        <div class="day-name">MON</div>
+        <div class="day-emoji">📺</div>
+        <div class="day-act">Ek Topic Video</div>
+        <div class="day-dur dur-smm">1 hr</div>
+      </div>
+      <div class="day-slot">
+        <div class="day-name">TUE</div>
+        <div class="day-emoji">🔨</div>
+        <div class="day-act">Hands-on Practice</div>
+        <div class="day-dur dur-smm">1.5 hr</div>
+      </div>
+      <div class="day-slot">
+        <div class="day-name">WED</div>
+        <div class="day-emoji">🛠️</div>
+        <div class="day-act">Tool Explore</div>
+        <div class="day-dur dur-hr">1 hr</div>
+      </div>
+      <div class="day-slot">
+        <div class="day-name">THU</div>
+        <div class="day-emoji">📝</div>
+        <div class="day-act">LinkedIn Post / Apply</div>
+        <div class="day-dur dur-hr">1 hr</div>
+      </div>
+      <div class="day-slot">
+        <div class="day-name">FRI</div>
+        <div class="day-emoji">📊</div>
+        <div class="day-act">Week Review</div>
+        <div class="day-dur dur-smm">45 min</div>
+      </div>
+      <div class="day-slot weekend">
+        <div class="day-name">SAT</div>
+        <div class="day-emoji">💼</div>
+        <div class="day-act">Portfolio / Project</div>
+        <div class="day-dur" style="color:var(--purple)">3 hr</div>
+      </div>
+      <div class="day-slot weekend">
+        <div class="day-name">SUN</div>
+        <div class="day-emoji">🌸</div>
+        <div class="day-act">Rest + Plan Next Week</div>
+        <div class="day-dur" style="color:var(--muted)">30 min</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ COMMON MISTAKES ═══════════════════ -->
+<div class="section">
+  <div class="container">
+    <div class="eyebrow" style="color:#dc2626">// Avoid These</div>
+    <div class="sec-title">Yeh Galtiyan Mat Karna</div>
+    <p class="sec-sub">Dono careers mein common beginner mistakes — aur unka solution</p>
+
+    <div class="mistakes-grid">
+      <div class="mistake-card">
+        <div class="mk-x">❌</div>
+        <div class="mk-title">Sirf Certificates Collect Karna</div>
+        <div class="mk-fix">10 certificates aur 0 practical work — koi kaam ka nahi. <span class="fix">Fix: 1 real project > 5 certificates.</span></div>
+      </div>
+      <div class="mistake-card">
+        <div class="mk-x">❌</div>
+        <div class="mk-title">Perfect Hone Ka Wait Karna</div>
+        <div class="mk-fix">"Thoda aur seekh loon phir apply karungi" — yeh trap hai. <span class="fix">Fix: 60% ready ho toh apply karo.</span></div>
+      </div>
+      <div class="mistake-card">
+        <div class="mk-x">❌</div>
+        <div class="mk-title">SMM: Sirf Followers Count Karna</div>
+        <div class="mk-fix">1000 followers with 20% engagement > 10000 with 0.5%. <span class="fix">Fix: Engagement rate focus karo.</span></div>
+      </div>
+      <div class="mistake-card">
+        <div class="mk-x">❌</div>
+        <div class="mk-title">HR: Only Bookish Knowledge</div>
+        <div class="mk-fix">HR laws padhe hain par kabhi interview nahi liya. <span class="fix">Fix: Mock interviews, college events se practice lo.</span></div>
+      </div>
+      <div class="mistake-card">
+        <div class="mk-x">❌</div>
+        <div class="mk-title">LinkedIn Profile Blank Rakhna</div>
+        <div class="mk-fix">Dono careers mein LinkedIn tera CV hai. Blank = invisible. <span class="fix">Fix: Aaj hi complete profile banao.</span></div>
+      </div>
+      <div class="mistake-card">
+        <div class="mk-x">❌</div>
+        <div class="mk-title">Multiple Careers Ek Saath Try Karna</div>
+        <div class="mk-fix">SMM bhi seekh rahi, HR bhi, coding bhi — result: kuch nahi. <span class="fix">Fix: Ek choose karo — 100% do.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ FULL REFERENCES ═══════════════════ -->
+<div class="section">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--purple)">// Complete References</div>
+    <div class="sec-title">Saare Free Resources<br>Ek Jagah</div>
+    <p class="sec-sub">Sab kuch FREE — koi paid course ki zaroorat nahi</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <!-- SMM Resources -->
+      <div>
+        <div style="background:var(--smm);color:#fff;padding:10px 16px;border-radius:10px 10px 0 0;font-weight:800;font-size:14px">📱 Social Media Manager Resources</div>
+        <div style="background:var(--white);border:1.5px solid #f9a8d4;border-top:none;border-radius:0 0 10px 10px;padding:16px">
+          <div style="margin-bottom:12px">
+            <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">YOUTUBE — HINDI</div>
+            <div class="res-pills" style="flex-direction:column;align-items:flex-start">
+              <a href="https://youtube.com/@WsCubeTech" target="_blank" class="res-pill rp-yt-smm" style="width:100%;justify-content:space-between">📺 WsCube Tech — DM Full Course <span class="hin-tag">HINDI</span></a>
+              <a href="https://youtube.com/@digitaldeepakofficial" target="_blank" class="res-pill rp-yt-smm" style="width:100%;justify-content:space-between">📺 Digital Deepak <span class="hin-tag">HINDI</span></a>
+              <a href="https://youtube.com/@idigiskills" target="_blank" class="res-pill rp-yt-smm" style="width:100%;justify-content:space-between">📺 iDigiSkills — SMM Tips <span class="hin-tag">HINDI</span></a>
+              <a href="https://youtube.com/@HishamSarwar" target="_blank" class="res-pill rp-yt-smm" style="width:100%;justify-content:space-between">📺 Hisham Sarwar — Freelancing <span class="hin-tag">HINDI</span></a>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">FREE CERTIFICATIONS</div>
+            <div class="res-pills" style="flex-direction:column;align-items:flex-start">
+              <a href="https://www.facebookblueprint.com/" target="_blank" class="res-pill rp-cert" style="width:100%;justify-content:space-between">🏆 Meta Blueprint — Instagram Ads <span class="free-tag">FREE</span></a>
+              <a href="https://skillshop.withgoogle.com/" target="_blank" class="res-pill rp-cert" style="width:100%;justify-content:space-between">🏆 Google Skillshop — Google Ads <span class="free-tag">FREE</span></a>
+              <a href="https://digitalgarage.withgoogle.com/" target="_blank" class="res-pill rp-cert" style="width:100%;justify-content:space-between">🏆 Google Digital Garage <span class="free-tag">FREE CERT</span></a>
+              <a href="https://academy.hubspot.com/" target="_blank" class="res-pill rp-cert" style="width:100%;justify-content:space-between">🏆 HubSpot Academy — Content Marketing <span class="free-tag">FREE</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HR Resources -->
+      <div>
+        <div style="background:var(--hr);color:#fff;padding:10px 16px;border-radius:10px 10px 0 0;font-weight:800;font-size:14px">👥 HR Manager Resources</div>
+        <div style="background:var(--white);border:1.5px solid #bfdbfe;border-top:none;border-radius:0 0 10px 10px;padding:16px">
+          <div style="margin-bottom:12px">
+            <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">YOUTUBE — HINDI</div>
+            <div class="res-pills" style="flex-direction:column;align-items:flex-start">
+              <a href="https://youtube.com/@HRInsiderHindi" target="_blank" class="res-pill rp-yt-hr" style="width:100%;justify-content:space-between">📺 HR Insider Hindi — Complete Guide <span class="hin-tag">HINDI</span></a>
+              <a href="https://youtube.com/@skillsfire" target="_blank" class="res-pill rp-yt-hr" style="width:100%;justify-content:space-between">📺 Skills Fire — HR Tutorials <span class="hin-tag">HINDI</span></a>
+              <a href="https://youtube.com/@CareerGuide" target="_blank" class="res-pill rp-yt-hr" style="width:100%;justify-content:space-between">📺 Career Guide — HR Interview Prep <span class="hin-tag">HINDI</span></a>
+              <a href="https://youtube.com/@hr_cabinet" target="_blank" class="res-pill rp-yt-hr" style="width:100%;justify-content:space-between">📺 HR Cabinet — Practical HR <span class="hin-tag">HINDI</span></a>
+            </div>
+          </div>
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px">FREE CERTIFICATIONS</div>
+            <div class="res-pills" style="flex-direction:column;align-items:flex-start">
+              <a href="https://www.coursera.org/learn/human-resource-management" target="_blank" class="res-pill rp-cert" style="width:100%;justify-content:space-between">🏆 Coursera — HRM Course (Audit Free) <span class="free-tag">FREE</span></a>
+              <a href="https://alison.com/courses/human-resource-management" target="_blank" class="res-pill rp-cert" style="width:100%;justify-content:space-between">🏆 Alison — HR Management Diploma <span class="free-tag">FREE</span></a>
+              <a href="https://nptel.ac.in" target="_blank" class="res-pill rp-cert" style="width:100%;justify-content:space-between">🏆 NPTEL — HR & OB Course <span class="free-tag">FREE + CERT</span></a>
+              <a href="https://linkedin.com/learning" target="_blank" class="res-pill rp-cert" style="width:100%;justify-content:space-between">🏆 LinkedIn Learning — HR <span class="free-tag">1 MONTH FREE</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Practice Platforms -->
+    <div style="margin-top:20px">
+      <div style="background:var(--ink);color:#fff;padding:10px 16px;border-radius:10px 10px 0 0;font-weight:800;font-size:14px">🚀 Jobs & Internships — Apply Here</div>
+      <div style="background:var(--white);border:1.5px solid var(--border);border-top:none;border-radius:0 0 10px 10px;padding:16px">
+        <div class="res-pills">
+          <a href="https://internshala.com" target="_blank" class="res-pill rp-free">💼 Internshala — #1 for Internships <span class="free-tag">FREE</span></a>
+          <a href="https://naukri.com" target="_blank" class="res-pill rp-free">💼 Naukri.com — Fresher Jobs</a>
+          <a href="https://linkedin.com/jobs" target="_blank" class="res-pill rp-free">💼 LinkedIn Jobs</a>
+          <a href="https://unstop.com" target="_blank" class="res-pill rp-free">💼 Unstop — College Competitions</a>
+          <a href="https://fiverr.com" target="_blank" class="res-pill rp-tool">💰 Fiverr — SMM Freelance</a>
+          <a href="https://workindia.in" target="_blank" class="res-pill rp-free">💼 WorkIndia — Entry Level</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ AFFIRMATIONS ═══════════════════ -->
+<div class="section">
+  <div class="container">
+    <div class="affirm-strip">
+      <div class="affirm-item">
+        <div class="aff-emoji">🌟</div>
+        <div class="aff-text">"Coding nahi aati toh bhi crores ki company mein job milti hai"</div>
+        <div class="aff-eng">NON-CODING = VALID CAREER</div>
+      </div>
+      <div class="affirm-item">
+        <div class="aff-emoji">📱</div>
+        <div class="aff-text">"Jo social media pe din bhar rehti hai — woh SMM mein best hogi"</div>
+        <div class="aff-eng">YOUR HABIT = YOUR SKILL</div>
+      </div>
+      <div class="affirm-item">
+        <div class="aff-emoji">👥</div>
+        <div class="aff-text">"Baatein karna, logon ko samajhna — HR ka sabse bada skill hai"</div>
+        <div class="aff-eng">COMMUNICATION = SUPERPOWER</div>
+      </div>
+      <div class="affirm-item">
+        <div class="aff-emoji">🚀</div>
+        <div class="aff-text">"6 mahine ki mehnat = pehli job, 3 saal ki mehnat = manager"</div>
+        <div class="aff-eng">CONSISTENCY WINS</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-big">Teri dost ke liye — dono careers mein future bright hai! 💜</div>
+  SOCIAL MEDIA MANAGER + HR MANAGER GUIDE &nbsp;|&nbsp; HINDI RESOURCES &nbsp;|&nbsp; PRACTICAL ONLY
+</footer>
+
+<script>
+function toggleTask(el) {
+  el.classList.toggle('checked');
+  const box = el.querySelector('.check-box');
+  box.textContent = el.classList.contains('checked') ? '✓' : '';
+}
+</script>
+</body>
+</html>
